@@ -3,10 +3,6 @@ __copyright__ = "Copyright © 2023-2024 L4n32"
 __version__ = "1.0"
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5 import *
 from tkinter import filedialog
 from about import Ui_AboutWindow
 import os
@@ -26,7 +22,7 @@ class Ui_MainWindow(object):
             ("BZIP2 files", '*.bzip2'), ("XZ files", '*.xz'), ("Z files", '*.z'), 
             ("BZ2 files", '*.bz2'), ("GZ files", '*.gz'), 
             ("ZIPX files", '*.zipx'), ("ZST files", '*.zst'), 
-            ("001 files", '*.001'), ("All files", "*")], title="Choose file name", defaultextension="rar")
+            ("001 files", '*.001'), ("All files", "*")], title="Choose file name")
         if filepath != "":
             with open(filepath, "r") as file:
                 rar = filepath.replace('/', '\\')
@@ -39,7 +35,7 @@ class Ui_MainWindow(object):
             ("BMP files", '*.bmp'), ("SVG files (File error)", '*.svg'), 
             ("WEBP files", '*.webp'), ("AI files", '*.ai'), ("CDR files", '*.cdr'), 
             ("HEIF files", '*.heif'), ("AVIF files", '*.avif'), ("ICO files", '*.ico'), 
-            ("ICNS files", '*.icns'), ("All files", "*")], title="Choose file name", defaultextension="jpg")
+            ("ICNS files", '*.icns'), ("All files", "*")], title="Choose file name")
         if filepath != "":
             with open(filepath, "r") as file:
                 img = filepath.replace('/', '\\')
@@ -52,7 +48,7 @@ class Ui_MainWindow(object):
             ("PSD files", '*.psd'), ("SVG files (File error)", '*.svg'), 
             ("WEBP files", '*.webp'), ("AI files", '*.ai'), ("CDR files", '*.cdr'), 
             ("HEIF files", '*.heif'), ("AVIF files", '*.avif'), ("ICO files", '*.ico'), 
-            ("ICNS files", '*.icns'), ("All files", "*"),], title="Choose file name", defaultextension="jpg")
+            ("ICNS files", '*.icns'), ("All files", "*"),], title="Choose file name")
         if filepath != "":
             with open(filepath, "w") as file:
                 output = filepath.replace('/', '\\')
@@ -62,12 +58,13 @@ class Ui_MainWindow(object):
         os.system(f"type {img} {rar} > {output}")
 
     def setupUi(self, MainWindow):
-        print()
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
         MainWindow.setFixedSize(240, 72)
-        if os.path.isfile("images/icon.ico"):
-            MainWindow.setWindowIcon(QIcon('images/icon.ico'))
+
+        if os.path.isfile("icon.ico"):
+            MainWindow.setWindowIcon(QtGui.QIcon('icon.ico'))
+
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -105,7 +102,7 @@ class Ui_MainWindow(object):
 
         MainWindow.setCentralWidget(self.centralwidget)
 
-        self.menubar = QMenuBar(MainWindow)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
         MainWindow.setMenuBar(self.menubar)
 
         MenuFile = self.menubar.addMenu("File")
