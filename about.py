@@ -8,8 +8,8 @@ class Ui_AboutWindow(object):
         AboutWindow.setFixedSize(281, 96)
         AboutWindow.setAutoFillBackground(False)
 
-        if os.path.isfile("images/icon.ico"):
-            AboutWindow.setWindowIcon(QtGui.QIcon('images/icon.ico'))
+        if os.path.isfile("icon.ico"):
+            AboutWindow.setWindowIcon(QtGui.QIcon('icon.ico'))
 
         self.centralwidget = QtWidgets.QWidget(AboutWindow)
         self.centralwidget.setObjectName("centralwidget")
